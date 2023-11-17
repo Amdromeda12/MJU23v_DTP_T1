@@ -1,4 +1,6 @@
-﻿using System.Globalization;
+﻿using System.ComponentModel.Design;
+using System.Globalization;
+using System.Text.RegularExpressions;
 
 
 
@@ -48,12 +50,12 @@ namespace MJU23v_DTP_T1
                 string line = sr.ReadLine();
                 while (line != null)
                 {
-                    // Console.WriteLine(line);
                     lang = new Language(line);
                     eulangs.Add(lang);
                     line = sr.ReadLine();
                 }
             }
+            /*
             Console.WriteLine("==== Languages in Spain ====");
             foreach (Language L in eulangs)
             {
@@ -92,6 +94,7 @@ namespace MJU23v_DTP_T1
                     sumromance += L.pop;
             }
             Console.WriteLine($"Romance speaking population: {sumromance}");
+*/
             Console.WriteLine("help - visar alla kommandos");
             string[] input;
             do
@@ -101,9 +104,9 @@ namespace MJU23v_DTP_T1
                 if (input[0] == "help")
                 {
                     //TODO: Gör Help funtionen
-                    Console.WriteLine("list group + 'group name' - visar alla språk i en grupp - NYI");
-                    Console.WriteLine("list country + 'country name' - visar alla språk i ett land - NYI");
-                    Console.WriteLine("list between 'lownum'and 'hinum' - visar alla språk med befolkning mellan måten - NYI");
+                    Console.WriteLine("list group 'group name' - visar alla språk i en grupp - NYI");
+                    Console.WriteLine("list country 'country name' - visar alla språk i ett land - NYI");
+                    Console.WriteLine("list between 'lownum' and 'hinum' - visar alla språk med befolkning mellan måten - NYI");
                     Console.WriteLine("show 'language' - visar atributerna av ett språk - NYI");
                     Console.WriteLine("show group 'group name' - visar atributerna av alla språk i gruppen - NYI");
                     Console.WriteLine("show country 'countryname' - visar atributerna av alla språk i landet - NYI");
@@ -118,10 +121,44 @@ namespace MJU23v_DTP_T1
                 }
                 else if (input[0] == "list")
                 {
-                    foreach (Language L in eulangs)
+                    if (input[1] == "group")
                     {
-                        if (L.pop >= 50_000_000)
-                            L.Print();
+                        string group = input[2];
+                        if (input.Length > 3)
+                        {
+                            group = $"{input[2]} {input[3]}";
+                        }
+
+                        foreach (Language L in eulangs)
+                        {
+                            if (L.group.Contains(group))
+                                Console.WriteLine(L.language);
+                        }
+                    }
+                    if (input[1] == "country")
+                    {
+                        string country = input[2];
+                        if (input.Length > 3)
+                        {
+                            country = $"{input[2]} {input[3]}";
+                        }
+
+                        foreach (Language L in eulangs)
+                        {
+                            if (L.area.Contains(country))
+                                Console.WriteLine(L.language);
+                        }
+                    }
+                    if (input[1] == "between")
+                    {
+                        double min = double.Parse(input[2]);
+                        double max = double.Parse(input[4]);
+
+                        foreach (Language L in eulangs)
+                        {
+                            if (min <= L.pop && max >= L.pop)
+                                Console.WriteLine(L.language);
+                        }
                     }
                 }
                 else
