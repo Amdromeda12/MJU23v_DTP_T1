@@ -103,10 +103,9 @@ namespace MJU23v_DTP_T1
                 input = Console.ReadLine().Split(' ');
                 if (input[0] == "help")
                 {
-                    //TODO: Gör Help funtionen
-                    Console.WriteLine("list group 'group name' - visar alla språk i en grupp - NYI");
-                    Console.WriteLine("list country 'country name' - visar alla språk i ett land - NYI");
-                    Console.WriteLine("list between 'lownum' and 'hinum' - visar alla språk med befolkning mellan måten - NYI");
+                    Console.WriteLine("list group 'group name' - visar alla språk i en grupp");
+                    Console.WriteLine("list country 'country name' - visar alla språk i ett land");
+                    Console.WriteLine("list between 'lownum' and 'hinum' - visar alla språk med befolkning mellan måten");
                     Console.WriteLine("show 'language' - visar atributerna av ett språk - NYI");
                     Console.WriteLine("show group 'group name' - visar atributerna av alla språk i gruppen - NYI");
                     Console.WriteLine("show country 'countryname' - visar atributerna av alla språk i landet - NYI");
@@ -159,7 +158,36 @@ namespace MJU23v_DTP_T1
                             if (min <= L.pop && max >= L.pop)
                                 Console.WriteLine(L.language);
                         }
+                    }//FIXME:Om lista inte har flera "inputs", flera exceptions
+                }
+                else if (input[0] == "show")
+                {
+                    String language = input[1];
+                    if (input.Length > 2)
+                    {
+                        language = $"{input[1]} {input[2]}";
                     }
+                    foreach (Language L in eulangs)
+                    {
+                        if (L.language.Contains(language))
+                            L.Print();
+                    }
+                    if (input[1] == "group")
+                    {
+                        //NYI:
+                    }
+                    if (input[1] == "country")
+                    {
+                        //NYI:
+                    }
+                    if (input[1] == "between")
+                    {
+                        //NYI:
+                    }//FIXME:Om lista inte har flera "inputs", flera exceptions
+                }
+                else if (input[0] == "population")
+                {
+                    //NYI:
                 }
                 else
                 {
