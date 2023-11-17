@@ -1,5 +1,12 @@
 ﻿using System.Globalization;
 
+
+
+/* PLAN
+1. göra en "while" menyn som man kan navigera.
+2. sätt in help och quit kommandon i loopen
+3. välj vilka andra 4 kommandon och lägga in dom
+*/
 namespace MJU23v_DTP_T1
 {
     public class Language
@@ -33,6 +40,8 @@ namespace MJU23v_DTP_T1
         static List<Language> eulangs = new List<Language>();
         static void Main(string[] arg)
         {
+            
+
             using (StreamReader sr = new StreamReader($"{dir}\\lang.txt"))
             {
                 Language lang;
@@ -83,6 +92,35 @@ namespace MJU23v_DTP_T1
                     sumromance += L.pop;
             }
             Console.WriteLine($"Romance speaking population: {sumromance}");
+
+            string[] input;
+            Console.Write(">");
+            do
+            {
+                input = Console.ReadLine().Split(' ');
+                if (input[0] == "help")
+                {
+                    //TODO: Gör Help funtionen
+                    Console.WriteLine("Waow");
+                }
+                else if (input[0] == "quit")
+                {
+                    Console.WriteLine("Adjö");
+                }
+                else if (input[0] == "list")
+                {
+                    foreach (Language L in eulangs)
+                    {
+                        if (L.pop >= 50_000_000)
+                            L.Print();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Okänt kommand, Tönt");
+                }
+
+            } while (input[0] != "quit");
         }
     }
 }
