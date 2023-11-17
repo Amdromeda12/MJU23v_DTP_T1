@@ -92,16 +92,25 @@ namespace MJU23v_DTP_T1
                     sumromance += L.pop;
             }
             Console.WriteLine($"Romance speaking population: {sumromance}");
-
+            Console.WriteLine("help - visar alla kommandos");
             string[] input;
-            Console.Write(">");
             do
             {
+                Console.Write(">");
                 input = Console.ReadLine().Split(' ');
                 if (input[0] == "help")
                 {
                     //TODO: Gör Help funtionen
-                    Console.WriteLine("Waow");
+                    Console.WriteLine("list group + 'group name' - visar alla språk i en grupp - NYI");
+                    Console.WriteLine("list country + 'country name' - visar alla språk i ett land - NYI");
+                    Console.WriteLine("list between 'lownum'and 'hinum' - visar alla språk med befolkning mellan måten - NYI");
+                    Console.WriteLine("show 'language' - visar atributerna av ett språk - NYI");
+                    Console.WriteLine("show group 'group name' - visar atributerna av alla språk i gruppen - NYI");
+                    Console.WriteLine("show country 'countryname' - visar atributerna av alla språk i landet - NYI");
+                    Console.WriteLine("show between 'lownum and hinum' - visar atributerna av alla språk mellan måten - NYI");
+                    Console.WriteLine("population group 'groupname' - visar befolkning för hela språkgrupp - NYI");
+                    Console.WriteLine("help - visar alla kommandos");
+                    Console.WriteLine("quit - stängar av programmet");
                 }
                 else if (input[0] == "quit")
                 {
@@ -117,7 +126,7 @@ namespace MJU23v_DTP_T1
                 }
                 else
                 {
-                    Console.WriteLine("Okänt kommand, Tönt");
+                    Console.WriteLine("Okänt kommand");
                 }
 
             } while (input[0] != "quit");
