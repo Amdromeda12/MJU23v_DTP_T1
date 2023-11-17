@@ -42,8 +42,6 @@ namespace MJU23v_DTP_T1
         static List<Language> eulangs = new List<Language>();
         static void Main(string[] arg)
         {
-            
-
             using (StreamReader sr = new StreamReader($"{dir}\\lang.txt"))
             {
                 Language lang;
@@ -55,46 +53,6 @@ namespace MJU23v_DTP_T1
                     line = sr.ReadLine();
                 }
             }
-            /*
-            Console.WriteLine("==== Languages in Spain ====");
-            foreach (Language L in eulangs)
-            {
-                int index = L.area.IndexOf("Spain");
-                if (index != -1)
-                    L.Print();
-            }
-            Console.WriteLine("==== Baltic Languages ====");
-            foreach (Language L in eulangs)
-            {
-                int index = L.group.IndexOf("Baltic");
-                if (index != -1)
-                    L.Print();
-            }
-            Console.WriteLine("==== Population larger than 50 millions ====");
-            foreach (Language L in eulangs)
-            {
-                if (L.pop >= 50_000_000)
-                    L.Print();
-            }
-            Console.WriteLine("==== Number of Germanics ====");
-            int sumgerm = 0;
-            foreach (Language L in eulangs)
-            {
-                int index = L.group.IndexOf("Germanic");
-                if (index != -1)
-                    sumgerm += L.pop;
-            }
-            Console.WriteLine($"Germanic speaking population: {sumgerm}");
-            Console.WriteLine("==== Number of Romance ====");
-            int sumromance = 0;
-            foreach (Language L in eulangs)
-            {
-                int index = L.group.IndexOf("Romance");
-                if (index != -1)
-                    sumromance += L.pop;
-            }
-            Console.WriteLine($"Romance speaking population: {sumromance}");
-*/
             Console.WriteLine("help - visar alla kommandos");
             string[] input;
             do
@@ -106,14 +64,14 @@ namespace MJU23v_DTP_T1
                     Console.WriteLine("list group 'group name' - visar alla språk i en grupp");
                     Console.WriteLine("list country 'country name' - visar alla språk i ett land");
                     Console.WriteLine("list between 'lownum' and 'hinum' - visar alla språk med befolkning mellan måten");
-                    Console.WriteLine("show 'language' - visar atributerna av ett språk - NYI");
+                    Console.WriteLine("show 'language' - visar atributerna av ett språk");
                     Console.WriteLine("show group 'group name' - visar atributerna av alla språk i gruppen - NYI");
                     Console.WriteLine("show country 'countryname' - visar atributerna av alla språk i landet - NYI");
                     Console.WriteLine("show between 'lownum and hinum' - visar atributerna av alla språk mellan måten - NYI");
                     Console.WriteLine("population group 'groupname' - visar befolkning för hela språkgrupp - NYI");
                     Console.WriteLine("help - visar alla kommandos");
                     Console.WriteLine("quit - stängar av programmet");
-                }
+                }   //TODO: Kan göra detta till en .print function
                 else if (input[0] == "quit")
                 {
                     Console.WriteLine("Adjö");
